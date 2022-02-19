@@ -3,12 +3,12 @@
   become: True
   tasks:
     - name: Install packages
-      yum:
-        name: "httpd"
+      apt:
+        name: "nginx"
         state: "present"
-    - name: Start Apache server
+    - name: Start nginx server
       service:
-        name: httpd
+        name: nginx
         state: started
         enabled: True
     - name: Deploy static website
