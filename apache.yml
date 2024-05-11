@@ -2,19 +2,18 @@
 - hosts: all
   become: true
   tasks:
-    - name: Update package repositories
+    - name: Update package repositories (for Amazon Linux)
       yum:
-        update_cache: yes
-    
+        name: '*'
+        state: latest
+
     - name: Install Nginx package
       yum:
         name: nginx
         state: present
-    
+
     - name: Start nginx service
       service:
         name: nginx
         state: started
         enabled: true
-
-    
