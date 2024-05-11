@@ -1,2 +1,3 @@
-[webservers]
-172.31.4.233 ansible_user=ec2-user 
+[all]
+Slave ansible_user=ec2-user ansible_host=63.33.42.60 ansible_ssh_private_key_file=/home/ec2-user/ireland.pem
+
