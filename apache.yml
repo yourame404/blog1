@@ -1,27 +1,16 @@
----
 - hosts: all
-  become: true
+  become: True
   tasks:
-    - name: Update package repositories (for Amazon Linux)
+    - name: Install packages
       yum:
-        name: "*"
-        state: latest
-      become: true
-
-    - name: Install Nginx package
-      yum:
-        name: nginx
-        state: present
-      become: true
-
+        name: "nginx"
+        state: "present"
     - name: Start nginx server
       service:
         name: nginx
         state: started
-        enabled: true
-
+        enabled: True
     - name: Deploy static website
       copy:
-        src: index.html
-        dest: /usr/share/nginx/html/index.html
-      become: true
+        src: index.html # We have define a html page 
+        dest: /var/www/html/
