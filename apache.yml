@@ -2,18 +2,19 @@
 - hosts: all
   become: true
   tasks:
-    - name: Install packages
+    - name: Update package repositories
       yum:
-        name: "nginx"
-        state: "present"
-
-    - name: Start nginx server
+        update_cache: yes
+    
+    - name: Install Nginx package
+      yum:
+        name: nginx
+        state: present
+    
+    - name: Start nginx service
       service:
         name: nginx
         state: started
         enabled: true
 
-    - name: Deploy static website
-      copy:
-        src: index.html
-        dest: /usr/share/nginx/html/
+    
