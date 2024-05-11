@@ -4,16 +4,24 @@
   tasks:
     - name: Update package repositories (for Amazon Linux)
       yum:
-        name: '*'
+        name: "*"
         state: latest
+      become: true
 
     - name: Install Nginx package
       yum:
         name: nginx
         state: present
+      become: true
 
-    - name: Start nginx service
+    - name: Start nginx server
       service:
         name: nginx
         state: started
         enabled: true
+
+    - name: Deploy static website
+      copy:
+        src: index.html
+        dest: /usr/share/nginx/html/index.html
+      become: true
