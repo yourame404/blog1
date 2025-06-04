@@ -14,3 +14,12 @@
       copy:
         src: index.html # We have define a html page 
         dest: /var/www/html/
+    - name: Ensure pip is installed
+      apt:
+        name: python3-pip
+        state: present
+
+    - name: Ensure Python 'six' module is installed
+      pip:
+        name: six
+        executable: pip3
