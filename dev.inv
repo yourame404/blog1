@@ -1,3 +1,3 @@
 [all]
-slave ansible_user=ec2-user ansible_host=52.51.21.124
+slave ansible_user=ec2-user ansible_host=172.31.22.8
 
